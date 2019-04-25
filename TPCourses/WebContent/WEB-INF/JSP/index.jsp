@@ -20,7 +20,12 @@
 					<c:forEach var="liste" items="${ListedeListe}">
 						<div class="row">
 								${liste.getNom()}
-								
+								<form action="ServletCommencerCourses" method="get">
+									<input type="submit" value="Panier" name="boutonCommencerCourses"/>
+								</form>
+								<form action="ServletSupprimerListe" method="get">
+									<input type="submit" value="Supprimer" name="boutonSupprimer"/>
+								</form>
 						</div>	
 							
 					</c:forEach>
