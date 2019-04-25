@@ -10,9 +10,7 @@
 </head>
 <body>
 		
-		<h1>COURSES</h1>
 		
-		<h2>Listes prédéfinies</h2>
 		
 		
 </body>

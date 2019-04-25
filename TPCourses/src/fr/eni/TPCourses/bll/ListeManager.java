@@ -1,6 +1,11 @@
 package fr.eni.TPCourses.bll;
 
-import fr.eni.javaee.suividesrepas.dal.DAOFactory;
+import java.util.List;
+
+import fr.eni.TPCourses.bo.Liste;
+import fr.eni.TPCourses.dal.DAOFactory;
+import fr.eni.TPCourses.dal.ListeDAO;
+
 
 public class ListeManager {
 public ListeManager instance;
@@ -18,6 +23,7 @@ public ListeManager instance;
 		this.instance = instance;
 	}
 	
+	private ListeDAO listeDAO;
 	
 	
 	//Methodes
