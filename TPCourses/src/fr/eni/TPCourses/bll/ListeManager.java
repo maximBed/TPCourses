@@ -2,19 +2,19 @@ package fr.eni.TPCourses.bll;
 
 import fr.eni.javaee.suividesrepas.dal.DAOFactory;
 
-public class CourseManager {
-public CourseManager instance;
-	public CourseManager() {
+public class ListeManager {
+public ListeManager instance;
+	public ListeManager() {
 		
 	}
 	//Singleton
-	public CourseManager getInstance() {
+	public ListeManager getInstance() {
 		if(instance!=null) {
-			instance= new CourseManager();
+			instance= new ListeManager();
 		}
 		return instance;
 	}
-	public void setInstance(CourseManager instance) {
+	public void setInstance(ListeManager instance) {
 		this.instance = instance;
 	}
 	
