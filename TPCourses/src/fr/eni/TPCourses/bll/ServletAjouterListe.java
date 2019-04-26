@@ -52,7 +52,12 @@ public class ServletAjouterListe extends HttpServlet {
 		
 		listeCourse.setArticles(listeArticle);
 		
-		
+		if(listeCourse != null)
+		{
+			
+			
+			
+		}
 		
 		
 	}
