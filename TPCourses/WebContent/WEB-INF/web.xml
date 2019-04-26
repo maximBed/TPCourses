@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
@@ -12,7 +11,7 @@
   
    <servlet>
   	<servlet-name>nouvelleListe</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/nouvelleListe.jsp</jsp-file>
+  	<jsp-file>/WEB-INF/JSP/nouvelleListe.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
   	<servlet-name>nouvelleListe</servlet-name>
@@ -22,7 +21,7 @@
   
   <servlet>
   	<servlet-name>panier</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/panier.jsp</jsp-file>
+  	<jsp-file>/WEB-INF/JSP/panier.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
   	<servlet-name>panier</servlet-name>
@@ -31,10 +30,15 @@
   
   <servlet>
   	<servlet-name>index</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
+  	<jsp-file>/WEB-INF/JSP/index.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
   	<servlet-name>index</servlet-name>
   	<url-pattern>/index</url-pattern>
   </servlet-mapping>
+<<<<<<< HEAD
+
+</web-app>
+=======
  </web-app>
+>>>>>>> branch 'master' of https://github.com/maximBed/TPCourses.git
