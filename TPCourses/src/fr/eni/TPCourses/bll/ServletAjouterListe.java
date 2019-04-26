@@ -19,6 +19,8 @@ import fr.eni.TPCourses.bo.Liste;
 @WebServlet("/ServletAjouterListe")
 public class ServletAjouterListe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Liste listeCourse = null;
+	List<Article> listeArticle= null;
 
     /**
      * Default constructor. 
@@ -43,21 +45,24 @@ public class ServletAjouterListe extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Liste listeCourse = new Liste();
-		listeCourse.setNom(request.getAttribute("textboxListe").toString());
-		
-		List<Article> listeArticle= new ArrayList<Article>();
-		
-		listeArticle.add( new Article (request.getAttribute("textboxArticle").toString()));
-		
-		listeCourse.setArticles(listeArticle);
-		
-		
-		if(listeCourse != null)
-		{
-			
-			
+				
+		if(listeCourse == null)
+		{	
+			listeCourse = new Liste();
+			listeCourse.setNom((String) request.getParameter("textboxListe"));
+			listeArticle= new ArrayList<Article>();
+			request.setAttribute("listeCourse", listeCourse);
+				
 		}
+			
+			Article article = new Article(request.getParameter("textboxArticle"));
+			listeArticle.add(article);
+			listeCourse.setArticles(listeArticle);
+			request.setAttribute("listeArticle", listeArticle);
+			
+		
+		
+		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
 		
 		
 	}

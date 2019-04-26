@@ -17,8 +17,8 @@
 	<input type="textbox" placeholder="Saississez le nom de votre liste" name="textboxListe"/>
 	
 	<c:choose>
-		<c:when test="${!empty ListedeListe }">
-			<c:forEach var="article" items="${ListeArticle}">
+		<c:when test="${!empty listeCourse }">
+			<c:forEach var="article" items="${listeArticle}">
 				<div class="row">
 						${article.getNom()}
 						<form action="ServletSupprimerListe" method="get">
@@ -37,5 +37,10 @@
 	<input type="submit" name="boutonAjouterArticle" value="+"/>
 	
 	</form>
+	
+	<form action="ServletIndex" method="get">
+		<input type="submit" value="->" name="retourIndex"/>
+	</form>
+	
 </body>
 </html>
