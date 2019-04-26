@@ -212,7 +212,39 @@ public class ListeDAOJdbcImpl implements ListeDAO{
 
 	@Override
 	public void update(Liste liste) {
-		// TODO Auto-generated method stub
+		connect();
+		String sql = "";
+		try {
+			sql = "update listes"
+					+ " set liste_nom = ? ,"
+					+ " where liste_id = ?";
+
+			this.psmt = cnx.prepareStatement(sql);
+
+			this.psmt.setString(1, liste.getNom());
+			this.psmt.setInt(2, liste.getId());
+
+			this.psmt.executeUpdate();	
+			
+			for (Article article : liste.getArticles()) {
+				sql = "update articles"
+						+ " set article_nom = ? ,"
+						+ " where liste_id = ?";
+				
+				this.psmt = cnx.prepareStatement(sql);
+
+				this.psmt.setString(1, article.getNom());
+				this.psmt.setInt(2, liste.getId());
+
+				this.psmt.executeUpdate();
+			}
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+			statementsClose();
+		}
 
 	}
 
