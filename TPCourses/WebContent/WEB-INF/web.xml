@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-<<<<<<< HEAD
   
    <servlet>
   	<servlet-name>nouvelleListe</servlet-name>
@@ -38,7 +37,4 @@
   	<servlet-name>index</servlet-name>
   	<url-pattern>/index</url-pattern>
   </servlet-mapping>
-  
-=======
->>>>>>> branch 'master' of https://github.com/maximBed/TPCourses.git
-</web-app>
+ </web-app>
