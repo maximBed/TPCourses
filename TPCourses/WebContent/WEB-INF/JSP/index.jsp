@@ -7,13 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container-fluid">
 
 		<h1>COURSES</h1>
 		
 		<h2>Listes prédéfinies</h2>
-		<div class="container">
 		
 			<c:choose>
 				<c:when test="${!empty ListedeListe }">
@@ -34,12 +45,11 @@
 						<p>Pas de liste de courses disponible.</p>
 				</c:otherwise>
 			</c:choose>
-		</div>
 		
 		<form action="ServletAjouterListe" method="get">
 			<input type="submit" value="+" name="boutonAjouter"/>
 		</form>
-		
+</div>	
 		
 </body>
 </html>
