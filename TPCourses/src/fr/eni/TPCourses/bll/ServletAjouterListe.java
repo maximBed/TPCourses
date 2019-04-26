@@ -19,6 +19,8 @@ import fr.eni.TPCourses.bo.Liste;
 @WebServlet("/ServletAjouterListe")
 public class ServletAjouterListe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Liste listeCourse = null;
+	List<Article> listeArticle= null;
 
     /**
      * Default constructor. 
@@ -43,32 +45,22 @@ public class ServletAjouterListe extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Liste listeCourse = null;
-		List<Article> listeArticle= null;
-		
 				
 		if(listeCourse == null)
 		{	
 			listeCourse = new Liste();
-			listeCourse.setNom((String) request.getAttribute("textboxListe"));
+			listeCourse.setNom((String) request.getParameter("textboxListe"));
 			listeArticle= new ArrayList<Article>();
-			if(request.getAttribute("textboxArticle") != null)
-			{
-				Article article = new Article("textboxArticle");
-				listeArticle.add(article);
-				listeCourse.setArticles(listeArticle);
-				request.setAttribute("listeCourse", listeCourse);
-				request.setAttribute("listeArticle", listeArticle);
-			}else {
-				request.setAttribute("ExceptionArticleSansNom", "Vous devez remplir le champ Article");
-			}
-			
-		}else{
-			
-			listeArticle.add( new Article ((String) request.getAttribute("textboxArticle")));
-			listeCourse.setArticles(listeArticle);
-			
+			request.setAttribute("listeCourse", listeCourse);
+				
 		}
+			
+			Article article = new Article(request.getParameter("textboxArticle"));
+			listeArticle.add(article);
+			listeCourse.setArticles(listeArticle);
+			request.setAttribute("listeArticle", listeArticle);
+			
+		
 		
 		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
 		
