@@ -17,6 +17,10 @@ public class Liste {
 		
 	}
 	
+	public Liste(String nom) {
+		this.nom = nom;
+	}
+	
 	public int getId() {
 		return id;
 	}
