@@ -43,21 +43,34 @@ public class ServletAjouterListe extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Liste listeCourse = new Liste();
-		listeCourse.setNom(request.getAttribute("textboxListe").toString());
+		Liste listeCourse = null;
+		List<Article> listeArticle= null;
 		
-		List<Article> listeArticle= new ArrayList<Article>();
-		
-		listeArticle.add( new Article (request.getAttribute("textboxArticle").toString()));
-		
-		listeCourse.setArticles(listeArticle);
-		
-		
-		if(listeCourse != null)
-		{
+				
+		if(listeCourse == null)
+		{	
+			listeCourse = new Liste();
+			listeCourse.setNom((String) request.getAttribute("textboxListe"));
+			listeArticle= new ArrayList<Article>();
+			if(request.getAttribute("textboxArticle") != null)
+			{
+				Article article = new Article("textboxArticle");
+				listeArticle.add(article);
+				listeCourse.setArticles(listeArticle);
+				request.setAttribute("listeCourse", listeCourse);
+				request.setAttribute("listeArticle", listeArticle);
+			}else {
+				request.setAttribute("ExceptionArticleSansNom", "Vous devez remplir le champ Article");
+			}
 			
+		}else{
+			
+			listeArticle.add( new Article ((String) request.getAttribute("textboxArticle")));
+			listeCourse.setArticles(listeArticle);
 			
 		}
+		
+		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
 		
 		
 	}
