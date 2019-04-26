@@ -19,6 +19,7 @@
 	<c:choose>
 		<c:when test="${!empty listeCourse }">
 			<c:forEach var="article" items="${listeArticle}">
+			
 				<div class="row">
 						${article.getNom()}
 						<form action="ServletSupprimerListe" method="get">
