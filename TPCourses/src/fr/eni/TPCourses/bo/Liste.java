@@ -13,6 +13,10 @@ public class Liste {
 		this.nom = nom;
 		this.articles = new ArrayList<Article>();
 	}
+	public Liste() {
+		
+	}
+	
 	public int getId() {
 		return id;
 	}

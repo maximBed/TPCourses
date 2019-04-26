@@ -8,6 +8,6 @@ public interface ListeDAO {
 	public void insert(Liste liste);
 	public List<Liste> selectAll();
 	public Liste selectById(int id);
-	public void delete(Liste liste);
-	public void update(int id);
+	public void delete(int id);
+	public void update(Liste liste);
 }
