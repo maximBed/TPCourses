@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.TPCourses.bo.Article;
+import fr.eni.TPCourses.bo.Liste;
+
 /**
  * Servlet implementation class ajouterServlet
  */
-@WebServlet("/ajouterServlet")
+@WebServlet("/ServletAjouterListe")
 public class ServletAjouterListe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +32,7 @@ public class ServletAjouterListe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
 		
 		
 		
@@ -39,8 +42,19 @@ public class ServletAjouterListe extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Liste listeCourse = new Liste();
+		listeCourse.setNom(request.getAttribute("textboxListe").toString());
+		
+		List<Article> listeArticle= new ArrayList<Article>();
+		
+		listeArticle.add( new Article (request.getAttribute("textboxArticle").toString()));
+		
+		listeCourse.setArticles(listeArticle);
+		
+		
+		
+		
 	}
 
 }

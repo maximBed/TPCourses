@@ -32,8 +32,6 @@
 		</c:otherwise>
 	</c:choose>
 	
-	</form>
-	<form action="ServletAjouterArticle" method="POST">
 	<label>Article: </label>
 	<input type="textbox" placeholder="Saississez le nom de votre article" name="textboxArticle"/>
 	<input type="submit" name="boutonAjouterArticle" value="+"/>

@@ -33,6 +33,7 @@ public class ServletIndex extends HttpServlet {
 		
 		List<Liste> listeDeListe = new ArrayList();
 		request.setAttribute("ListedeListe", listeDeListe);
+		this.getServletContext().getNamedDispatcher("index").forward(request, response);
 		
 		
 	}
