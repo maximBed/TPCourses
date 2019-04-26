@@ -8,6 +8,14 @@ public class Article {
 		this.id = id;
 		this.nom = nom;
 	}
+	
+	
+	public Article(String nom) {
+		super();
+		this.nom = nom;
+	}
+
+
 	public int getId() {
 		return id;
 	}
