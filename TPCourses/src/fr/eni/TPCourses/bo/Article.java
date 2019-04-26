@@ -9,6 +9,9 @@ public class Article {
 		this.nom = nom;
 	}
 	
+	public Article() {
+		
+	}
 	
 	public Article(String nom) {
 		super();

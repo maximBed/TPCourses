@@ -17,13 +17,10 @@
 	<input type="textbox" placeholder="Saississez le nom de votre liste" name="textboxListe"/>
 	
 	<c:choose>
-		<c:when test="${!empty listeCourse }">
-			<c:forEach var="article" items="${listeArticle}">
+		<c:when test="${!empty listeEnCours }">
+			<c:forEach var="article" items="${listeEnCours.getArticles()}">
 				<div class="row">
 						${article.getNom()}
-						<form action="ServletSupprimerListe" method="get">
-							<input type="submit" value="Supprimer" name="boutonSupprimer"/>
-						</form>
 				</div>		
 			</c:forEach>
 		</c:when>

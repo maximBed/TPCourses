@@ -19,52 +19,51 @@ import fr.eni.TPCourses.bo.Liste;
 @WebServlet("/ServletAjouterListe")
 public class ServletAjouterListe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Liste listeCourse = null;
-	List<Article> listeArticle= null;
 
-    /**
-     * Default constructor. 
-     */
-    public ServletAjouterListe() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public ServletAjouterListe() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
-		
-		
-		
+
+
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-				
-		if(listeCourse == null)
-		{	
-			listeCourse = new Liste();
+
+
+		if(request.getSession().getAttribute("listeEnCours") == null && request.getParameter("textboxListe") != null)
+		{				
+			Liste listeCourse = new Liste();
 			listeCourse.setNom((String) request.getParameter("textboxListe"));
-			listeArticle= new ArrayList<Article>();
-			request.setAttribute("listeCourse", listeCourse);
-				
+
+			List<Article> articles= new ArrayList<Article>();
+			articles.add(new Article(request.getParameter("textboxArticle")));
+			listeCourse.setArticles(articles);
+			request.getSession().setAttribute("listeEnCours", listeCourse);	
+			
+		}else if(request.getSession().getAttribute("listeEnCours") != null){
+			Liste listeCourse = (Liste)request.getSession().getAttribute("listeEnCours");
+			List<Article> articles= listeCourse.getArticles();
+			articles.add(new Article(request.getParameter("textboxArticle")));
+			listeCourse.setArticles(articles);
+			request.getSession().setAttribute("listeEnCours", listeCourse);	
 		}
-			
-			Article article = new Article(request.getParameter("textboxArticle"));
-			listeArticle.add(article);
-			listeCourse.setArticles(listeArticle);
-			request.setAttribute("listeArticle", listeArticle);
-			
-		
-		
+
 		this.getServletContext().getNamedDispatcher("nouvelleListe").forward(request, response);
-		
-		
+
 	}
 
 }

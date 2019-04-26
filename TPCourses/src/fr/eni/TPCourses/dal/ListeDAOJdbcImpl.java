@@ -126,7 +126,7 @@ public class ListeDAOJdbcImpl implements ListeDAO{
 			ResultSet rs =this.stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				listes.add(this.selectById(rs.getInt("id")));
+				listes.add(this.selectById(rs.getInt("liste_id")));
 			}
 
 			this.cnx.close();
@@ -176,8 +176,6 @@ public class ListeDAOJdbcImpl implements ListeDAO{
 			}
 
 			liste.setArticles(articles);
-
-			this.cnx.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
